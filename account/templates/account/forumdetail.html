@@ -1,0 +1,75 @@
+{% extends 'account/base.html'%}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/forums.css' %}">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2 style="text-transform: capitalize;"> {{forum.category_title}} </h2>
+        <a href="{% url 'account:updateThreadCategory' forum.id %}"class="btn btn-mine">Update Category</a>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="container fluid">
+  <div class="col-sm-3">
+    <a href="{% url 'account:createThread' %}" class="btn btn-mine" style="margin-bottom:"> Start Thread</a>
+  </div>
+  <div class=" col-sm-4">
+    <h4> Thread</h4>
+  </div>
+  <div class="col-sm-1">
+    <h4>Voices</h4>
+  </div>
+  <div class="col-sm-1">
+    <h4>Replys</h4>
+  </div>
+  <div class="col-sm-2">
+    <h4>Time Published</h4>
+  </div>
+  </div>
+  <div class="container fluid">
+    {%for threads in forum.thread_set.all%}
+    <div class="row card">
+  <div class="col-lg-3">
+    <a href="">
+      <img class="" src="{% static 'account/images/full-folder-512.png'%}" alt="Card image cap"  style="margin-right:2%;"></a>
+  </div>
+    <div class="card-block">
+      <div class="col-lg-4">
+      <a href="{% url 'account:threaddetail' threads.id %}"><h1 class="card-title">{{threads.queston}}</h1></a>
+      </div>
+      <div class="col-lg-1">
+        <h4>
+          {{threads.thread_reply_set.distinct.count }}
+        </h4>
+      </div>
+      <div class="col-lg-1">
+        <h4>{{threads.thread_reply_set.count}}</h4>
+      </div>
+      <div class="col-sm-2">
+        <h4>{{threads.time_created}}</h4>
+      </div>
+      <div class="col-sm-1">
+        <a href="{% url 'account:deleteThread' threads.id %}">
+          <span class="iconify" data-icon="octicon:trashcan" data-inline="false"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+    {% endfor %}
+    <div class="col-sm-6">
+      <p style="color:red;">To start a Thread you have to logged in</p>
+    </div>
+    </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock%}

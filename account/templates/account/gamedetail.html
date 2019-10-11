@@ -1,0 +1,50 @@
+{% extends 'account/base.html'%}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/detail.css' %}">
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2 style="text-transform:uppercase;"> {{game.game_title}} </h2>
+        <a href="{% url 'account:updategame' game.id %}" class="btn btn-mine"> Update Game</a>
+        <a href="{% url 'account:deletegame' game.id %}" class="btn btn-mine"> Delete Game</a>
+      </div>
+      </div>
+    </div>
+  </div>
+    <div class="container-fluid banner ">
+      <p>{{game.game_description}}</p>
+      <img class=".img-circle" src="{{ game.game_image.url }}" alt="" height="400" width="1200" style="margin-left:15px; margin-top:13px;">
+    </div>
+    <div class="container fluid">
+      <h1 style="margin-bottom:2%;">Posts</h1>
+      {% for post in posts%}
+        <a href="{% url 'account:detail' post.id %}">
+      <div class="row card">
+    <div class="col-lg-3">
+      <a href="{% url 'account:detail' post.id %}"><img class="card-img-top" src="{{post.post_img.url }}" alt="Card image cap"  style="margin-right:;"></a>
+    </div>
+      <div class="card-block col-lg-9">
+        <a href="{% url 'account:detail' post.id %}"><h1 class="card-title">{{post.title}}</h1></a>
+        <p class="card-text">{{post.body}}</p>
+
+      </div>
+    </div>
+    </a>
+      {% endfor %}
+  </div>
+<script>
+  $(document).ready(function(){
+    $(".jumbotron").css("background" , "linear-gradient( rgba(1,0,0,0.3), rgba(1, 0, 0, 0.3) ), url('{{game.game_image.url}}')");
+    $(".jumbotron").css("background-position" , "center");
+    $(".jumbotron").css("background-repeat" , "no-repeat");
+    $(".jumbotron").css("background-attachment" , "fixed");
+    $(".jumbotron").css("background-size" , "cover");
+
+  });
+</script>
+  {% endblock %}

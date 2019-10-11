@@ -1,0 +1,17 @@
+.field input{
+  background-color: #252525;
+  border-color: #252525;
+  padding-right: 10%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+.field{
+  font-size: 20px;
+}
+.field textarea{
+  background-color: #252525;
+  border-color: #252525;
+}
+.field select{
+  color:black;
+}

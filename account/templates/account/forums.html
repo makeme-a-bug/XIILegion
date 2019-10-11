@@ -1,0 +1,70 @@
+{% extends "account/base.html"%}
+{%load static%}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/forums.css' %}">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2> FORUMS </h2>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="container fluid">
+    <div class="col-sm-3">
+      <a href="{% url 'account:createThreadCategory' %}" class="btn btn-mine" style="margin-bottom:"> Add Thread category</a>
+    </div>
+  <div class="col-sm-4">
+    <h4> Thread</h4>
+  </div>
+  <div class="col-sm-1">
+    <h4>Threads</h4>
+  </div>
+  <div class="col-sm-1">
+    <h4>Created By</h4>
+  </div>
+  <div class="col-sm-2">
+    <h4>Time Published</h4>
+  </div>
+  <div class="col-sm-1">
+    <h4>Delete</h4>
+  </div>
+  </div>
+<div class="container fluid">
+  {% for forum in forums%}
+  <div class="row card pad">
+<div class="col-lg-3">
+  <a href=""><img class="form-img" src="{% static 'account/images/full-folder-512.png'%}" alt="Card image cap"  style="margin-right:2%;"></a>
+</div>
+  <div class="card-block  card-style">
+    <div class="col-lg-4 card-st">
+    <a  href="{% url 'account:forumdetail' forum.id  %}"><h1 class="card-title" style="text-transform:uppercase;">{{forum.category_title}}</h1></a>
+    <p id="gen_text">{{forum.description}}</p>
+    </div>
+    <div class="col-lg-1">
+      <h4>
+        {{forum.thread_set.count }}
+      </h4>
+    </div>
+    <div class="col-lg-1">
+      <h4>{{forum.author}}</h4>
+      <img src="{{forum.author.user_img.url}}" alt="" class="img-circle">
+    </div>
+    <div class="col-sm-2">
+      <h4>{{forum.time_created}}</h4>
+    </div>
+    <div class="col-sm-1">
+      <a href="{% url 'account:deleteThreadCategory' forum.id %}">
+        <span class="iconify" data-icon="octicon:trashcan" data-inline="false"></span>
+      </a>
+    </div>
+  </div>
+</div>
+  {% endfor %}
+</div>
+<br>
+<br><br><br><br><br><br><br>
+{% endblock %}

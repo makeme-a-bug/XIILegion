@@ -1,0 +1,80 @@
+{% extends 'account/base.html'%}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/detail.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'account/forums.css' %}">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2 style="text-transform:uppercase;">{{thread.queston}} </h2>
+        <a href="{% url 'account:updateThread' thread.id %}"class="btn btn-mine">Update Thread</a>
+      </div>
+      </div>
+    </div>
+  </div>
+        <div class="container fluid">
+          <div class="card icons">
+            <div class="row line">
+              <div class="col-sm-1">
+                <img  src="{{thread.author.user_img.url }}" alt="">
+              </div>
+              <div class="col-sm-1">
+                <h4 class="">{{thread.author.username}}</h4>
+              </div>
+            </div>
+            <div class="card-block icon">
+              <h3 class="">{{thread.detail}}</h3>
+          </div>
+          </div>
+          </div>
+          <div class="container fluid">
+            <h1 style="margin-left:10px;">Replys</h1>
+            {% if comments is True %}
+            {% for comment in thread.thread_reply_set.all%}
+            <div class="card icons icons1">
+              <div class="row line">
+                <div class="col-sm-1">
+                  <img  src="{{comment.author.user_img.url}}" alt="asdsd">
+                </div>
+                <div class="col-sm-1">
+                  <h4 class="">{{comment.author.username}}</h4>
+                </div>
+                {%if comment.author == user %}
+                <div class="col-sm-1">
+                  <span class="iconify" data-icon="octicon:trashcan" data-inline="false"></span>
+                </div>
+                {%endif%}
+              </div>
+              <div class="card-block icon">
+                <h3 class="">{{comment.reply}}</h3>
+            </div>
+            </div>
+            {% endfor %}
+            </div>
+        {% else %}
+        <h2 style="margin-left:5%;"> No Replys</h2>
+        {%endif%}
+    <div class="container-fluid comment">
+      <form class="" action="" method="post">
+        {% csrf_token %}
+        <h2>Leave a reply</h2>
+        <div class="row ">
+        <textarea name="comment" rows="8" cols="150" value="your comment....."></textarea>
+        </div>
+        <div class="col-sm-3">
+          <button type="submit" class="btn btn-mine"> submit </button>
+        </div>
+      </form>
+    </div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock%}

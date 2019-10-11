@@ -1,0 +1,219 @@
+body{
+  background-color:black;
+  color: white;
+  font-family: "Lato", sans-serif;
+  background-image:linear-gradient( rgba(1,0,0,0.3), rgba(1, 0, 0, 0.3) ), url("./images/black-background.jpg");
+  background-position: center;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+.navbar{
+  border-radius: 0%;
+  background-color: rgb(128,0,0,0.5);
+  color: white ;
+  font-size: 15px;
+  padding-top: 1.5%;
+  padding-left: 5%;
+  padding-bottom: 1.5%;
+  position:;
+}
+button{
+  background: none;
+border: none;
+font-size: 15px;
+line-height: 29px;
+font-weight: normal;
+}
+
+.owl-carousel.owl-loaded {
+margin-top: -30px;
+background-image:linear-gradient( rgba(1,0,0,0.3), rgba(1, 0, 0, 0.3))
+
+}
+.item{
+  overflow-x: hidden;
+  height:300px;
+  transform: skew(-4deg);
+  background-image:linear-gradient( rgba(1,0,0,0.3), rgba(1, 0, 0, 0.3));
+}
+.item h1{
+  text-align: center;
+  margin-top: 100px;
+  color:black;
+
+}
+.active{
+  border-style: none;
+  border-bottom-style: solid;
+  background-color:  rgb(218,165,32) !important;
+  border-bottom-color: rgb(218,165,32);
+}
+.navbar a{
+  color: #F6F7F8 ;
+  padding-top: 10%;
+  font-size: 14px/1.42857;
+  height: 50px;
+  font-weight: 300;
+  /* margin-left: 2% */
+}
+.navbar .navbar-nav a:hover{
+  background-color: inherit;
+  color: white ;
+  /* border-radius: 8px; */
+  border-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(218,165,32);
+}
+.navbar .navbar-nav ul:active {
+  background-color: None;
+}
+.navbar-header{
+  font-family: 'Satisfy' , cursive;
+}
+.jumbotron{
+  background-image:linear-gradient( rgba(1,0,0,0.5), rgba(1, 0, 0, 0.5) ), url("./images/destiny.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /* position: relative; */
+  margin-top: -120px;
+  padding-bottom: 10%;
+  color:white;
+  z-index: -10;
+}
+.jumpotext{
+  color: white;
+  margin-top: 10%;
+}
+.jumpotext h2{
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  line-height: 55px;
+  font-size: 55px;
+}
+.btn-mine{
+  margin-top: 3%;
+  font-size: 20px;
+  background-color: rgba(1,1,1,0);
+  border-style: solid;
+  border-color: rgb(218,165,32);
+  border-radius: 0px;
+  border-width: 2px;
+  color: white;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  transition: 0.3s color ease
+}
+ .btn:hover{
+   color:rgb(128,0,0);
+   background-color: rgb(218,165,32,0.5);
+ }
+ .box :hover{
+    background: #252525;
+    cursor: pointer;
+ }
+
+ .skewed{
+   margin-left: 51px;
+   box-sizing: content-box;
+   color: white;
+   z-index: 0;
+   background: #3E3E3E;
+   transform: skew(-4deg);
+   font-size: 14px;
+   padding-top: 32px;
+   padding-bottom: 20px;
+   margin-bottom: 40px;
+   height: 290px;
+ }
+ .skewed p{
+   transform: skew(4deg);
+   text-align: center;
+   margin-left: 2%;
+   line-height: 150%;
+ }
+ .skewed h2{
+   transform: skew(4deg);
+   text-align: center;
+   font-size: 24px;
+   letter-spacing: 2px;
+ }
+ .skewed img{
+   transform: skew(4deg);
+   margin-left: 25%;
+   align-self: center;
+   height: 100px;
+   weight:100px;
+ }
+ .card{
+   color: white;
+   margin-left: ;
+   margin-right: ;
+   border-radius: 2px;
+   /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+   padding-bottom: 5px;
+   margin-bottom: 20px;
+   transform: skew(-4deg);
+   /* background-color: #252525; */
+ }
+ .card img{
+   width: 300px;
+   height: 250px;
+   margin-left: -5%;
+
+ }
+ .card h1{
+   color:rgb(218,165,32);
+ }
+ .card h1 ,p, a{
+   transform: skew(4deg);
+   margin-left: 5%;
+ }
+ .card a> h1:hover {
+   text-decoration: none;
+ }
+ a:hover {
+   text-decoration: none;
+    outline: ;
+}
+ .footer{
+   background-image:linear-gradient( rgba(1,0,0,0.7), rgba(1, 0, 0, 0.7) ), url("./images/destiny.jpg");
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   /* position: relative; */
+   /* margin-top: -8%; */
+   margin-top: 5%;
+   width: 1500px;
+   margin-left: -10%;
+   padding-bottom: 15%;
+ }
+ .footer h4{
+   text-align: center;
+   font-size: 30px;
+ }
+ .footer a{
+   color: white;
+ }
+
+
+ .dropdown-menu{
+    display: grid;
+    overflow: hidden;
+    margin-top: 11px;
+    background-color: #480a0b;
+    margin-left: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+ }
+
+ @media only screen and (min-width: 768px) {
+   .dropdown-menu {
+      display:none !important;
+}
+ }

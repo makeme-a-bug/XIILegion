@@ -1,0 +1,118 @@
+{% extends "account/base.html"%}
+{%load static%}
+{% block body%}
+{% load groups_extra %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2> WELCOME TO </h2>
+        <h2 style="color:rgb(218,165,32)">LEGION XIII</h2>
+        {{user.groups.all}}
+        <!-- {% if request.user|has_group:"can edit post"%}
+        <p>User belongs to my group
+          {% else %}
+          <p>User doesn't belong to mygroup</p>
+          {% endif %} -->
+        <h2></h2>
+        <!-- <h2 style="margin-left:56%; margin-top:-11.5%;">GAMING</h2> -->
+      </div>
+      <div class="col-sm-12">
+        <a href="#" class=" btn btn-mine "><span class="iconify icon:simple-icons:discord"></span>  join us on Discord</a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="owl-carousel owl-theme">
+  {% for post in posts%}
+  <div class="item item-{{post.id}} " style="background-position: center;
+    background-repeat: repeat;
+    background-attachment: fixed;">
+  <div class="col-lg-9">
+  <a href="{% url 'account:detail' post.id %}"><h1 class="card-title">{{post.title}}</h1></a>
+  </div>
+  </div>
+
+  <script type="text/javascript">
+  $(".item-{{post.id}}").css("background", "url('{{ post.post_img.url }}')");
+  </script>
+  {% endfor %}
+</div>
+<div class="container-fluid" style="margin-left:3%;margin-top:3%;">
+  <div class="row box">
+    <div class="col-sm-2 skewed">
+      <img src="{% static 'account/images/keyboard-512.png' %}" alt="">
+      <h2> Multi-Game PC <br>
+          Community
+      </h2>
+      <p>We play it all! We are a <br> community built around <br>gamers, not an individual <br> game.</p>
+    </div>
+    <div class="col-sm-2 skewed">
+      <img src="{% static 'account/images/user-5-512.png' %}" alt="">
+      <h2> Regular Member <br>
+         Giveaways
+      </h2>
+      <p>Recruitment is open to new <br> members (18+)! Hop on our <br> Discord server to learn <br> more</p>
+    </div>
+    <div class="col-sm-2 skewed">
+      <img src="{% static 'account/images/gift-512.png' %}" alt="">
+      <h2> Multi-Game PC <br>
+          Community
+      </h2>
+      <p>Full members are eligible to <br> enter our giveaways, <br> including games, giftcards, <br> and more!</p>
+    </div>
+    <div class="col-sm-2 skewed">
+      <img src="{% static 'account/images/globe-3-512.png' %}" alt="">
+      <h2> NA Based  <br>
+           Community
+      </h2>
+      <p>We are a North American <br> based gaming community,<br> but all members are <br> welcome to join.</p>
+    </div>
+  </div>
+
+
+  <div class="container fluid">
+    <h1 style="margin-bottom:2%;">Latest Posts</h1>
+    {% for post in posts%}
+      <a href="{% url 'account:detail' post.id %}">
+    <div class="row card">
+  <div class="col-lg-3">
+    <a href="{% url 'account:detail' post.id %}"><img class="card-img-top" src="{{post.post_img.url }}" alt="Card image cap"  style="margin-right:;"></a>
+  </div>
+    <div class="card-block col-lg-9">
+      <a href="{% url 'account:detail' post.id %}"><h1 class="card-title">{{post.title}}</h1></a>
+      <p class="card-text">{{post.body}}</p>
+
+    </div>
+  </div>
+  </a>
+    {% endfor %}
+</div>
+<form class="" action="{% url 'account:login' %}" method="post" enctype="text/plain">
+
+  {% csrf_token %}
+  <input type="text" name="username" value="">
+  <input type="password" name="password" value="">
+  <input type="submit" name="" value="login">
+
+</form>
+
+<script type="text/javascript">
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    item : 10,
+    margin:-500,
+    autoHeight : true,
+    autoplay:true,
+    autoplayTimeout:3000,
+    autoplayHoverPause:true
+});
+
+$(document).ready(function(){
+  $(".item").css("background-position" , "center");
+});
+</script>
+{% endblock %}

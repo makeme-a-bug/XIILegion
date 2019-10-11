@@ -1,0 +1,43 @@
+{% extends 'account/base.html'%}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/detail.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'account/games.css' %}">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2 style="text-transform: capitalize;" >GAMES </h2>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="container fluid">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1>Games We Play</h1>
+      </div>
+      <div class="col-sm-offset-6 col-sm-2">
+        <a href="{% url 'account:creategame' %}" class="btn btn-mine">Add Game</a>
+      </div>
+    </div>
+    <div class="row">
+      {% for game in games %}
+      <div class="col-sm-3 game">
+        <h2 style="text-transform:uppercase;">{{game.game_title}}</h2>
+        <a href="{% url 'account:gamedetail' game.id %}">
+          <img src="{{game.game_image.url }}" alt="" class="img-thumbnail">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

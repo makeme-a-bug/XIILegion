@@ -1,0 +1,74 @@
+{% extends 'account/base.html'%}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/detail.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'account/forums.css' %}">
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2 style="text-transform:uppercase;"> {{posts.title}} </h2>
+        <a href="{% url 'account:updatepost' posts.id %}" class="btn btn-mine">Update Post</a>
+        <a href="{% url 'account:deletepost' posts.id %}" class="btn btn-mine">delete Post</a>
+
+        <!-- <a href="{% url 'account:deletepost' posts.id %}" class="btn btn-mine"> Delete post</a> -->
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid banner ">
+    <p>{{posts.body}}</p>
+    <img class=".img-circle" src="{{ posts.post_img.url }}" alt="" height="400" width="1200" style="margin-left:3%; margin-top:2%;">
+  </div>
+  <div class="container fluid">
+    <h1 style="margin-left:10px;">Comments</h1>
+    {% if comments is True %}
+    {% for comment in posts.post_reply_set.all%}
+    <div class="card icons icons1">
+      <div class="row line">
+        <div class="col-sm-1">
+          <img  src="{{comment.author.user_img.url}}" alt="asdsd">
+        </div>
+        <div class="col-sm-1">
+          <h4 class="">{{comment.author.username}}</h4>
+        </div>
+        {%if comment.author == user %}
+        <div class="col-sm-1">
+          <span class="iconify" data-icon="octicon:trashcan" data-inline="false"></span>
+        </div>
+        {%endif%}
+      </div>
+      <div class="card-block icon">
+        <h3 class="">{{comment.reply}}</h3>
+    </div>
+    </div>
+    {% endfor %}
+    </div>
+  {% else %}
+  <h2 style="margin-left:5%;"> No Replys</h2>
+  {%endif%}
+  <div class="container-fluid comment">
+    <form class="" action="" method="post">
+      {% csrf_token %}
+      <h2>Leave a reply</h2>
+      <div class="row ">
+      <textarea name="comment" rows="8" cols="150" value="your comment....."></textarea>
+      </div>
+      <div class="col-sm-offset-1 col-sm-3">
+        <button type="submit" class="btn btn-mine"> submit </button>
+      </div>
+    </form>
+  </div>
+
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+{% endblock%}

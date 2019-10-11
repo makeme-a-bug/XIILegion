@@ -1,0 +1,71 @@
+{% extends "account/base.html"%}
+{%load static%}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/signup.css' %}">
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2 style="color:rgb(218,165,32)">JOIN LEGION XIII</h2>
+        <!-- <h2 style="margin-left:56%; margin-top:-11.5%;">GAMING</h2> -->
+      </div>
+    </div>
+  </div>
+</div>
+{% for field in form %}
+{{field.errors}}
+{% endfor %}
+  <div class="container-fluid ">
+    <div class="row">
+      <form class=" " action="" method="post" enctype="multipart/form-data">
+        <h4 style="margin-left:5%;">Registering for this site is easy. Just fill in the fields below, and we'll get a new account set up for you <br> in no time.</h4>
+        {% if error %}
+        <h1>{{error}}</h1>
+        {% endif %}
+        {% csrf_token%}
+      <div class="col-sm-6 mine">
+        <h1>Account Details</h1>
+        <div class="col-sm-6" style="margin-bottom:12px;">
+          <h4>{{form.username.label_tag}}</h4>
+        </div>
+        <div class="col-sm-6 input-lg" style="margin-bottom:12px;">
+          {{form.username}}
+        </div>
+        <div class="col-sm-6" style="margin-bottom:12px;">
+          <h4>{{form.email.label_tag}}</h4>
+        </div>
+        <div class="col-sm-6 input-lg" style="margin-bottom:12px;">
+          {{form.email}}
+        </div>
+        <div class="col-sm-6" style="margin-bottom:12px;">
+          <h4>{{form.password.label_tag}}</h4>
+        </div>
+        <div class="col-sm-6 input-lg" style="margin-bottom:12px;">
+          {{form.password}}
+        </div>
+
+      </div>
+      <div class="col-sm-6 mine">
+        <h1>Profile Details</h1>
+        <div class="col-sm-6" style="margin-bottom:12px;">
+          <h4>Forum Name</h4>
+        </div>
+        <div class="col-sm-6 input-lg" style="margin-bottom:12px;">
+          <input type="text" name="forumname" value="">
+        </div>
+        <div class="col-sm-6" style="margin-bottom:12px;">
+          <h4>Discord Name</h4>
+        </div>
+        <div class="col-sm-6 input-lg" style="margin-bottom:12px;">
+          <input type="text" name="discordname" value="">
+        </div>
+      </div>
+          <div class="col-sm-12">
+            <button type="submit " class="btn btn-mine col-sm-offset-8"> Singup</button>
+          </div>
+    </form>
+  </div>
+    </div>
+  {% endblock %}

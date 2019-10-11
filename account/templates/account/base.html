@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Legion XIII</title>
+  </head>
+  <body>
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'account/style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://code.iconify.design/1/1.0.3/iconify.min.js"></script>
+    <script src="{% static 'account/owl.carousel.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="">
+      <nav class="navbar">
+        <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" name="button" class="navbar-toggle" data-toggle="collapse" data-target="#topnav">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand"href=""> <img class="navbar-brand" src="{% static 'account/images/logo.png' %}" alt=""> </a>
+            </div>
+            <div class="collapse navbar-collapse" height="" id="topnav">
+                  <ul  class="nav navbar-nav">
+                    <li class="">
+                      {% if About %}
+                      <a href="" class="active">
+                        <span class=""></span> ABOUT
+                      </a>
+                      {%else%}
+                      <a href="" class="">
+                        <span class=""></span> ABOUT
+                      </a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Games
+                      </a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Link 1</a>
+                        <a class="dropdown-item" href="#">Link 2</a>
+                        <a class="dropdown-item" href="#">Link 3</a>
+                      </div>
+                    </li>
+                    <li class="">
+                      {% if astream %}
+                      <a  class="active" href="">
+                        <span class=""></span> STREAMERS
+                      </a>
+                      {%else%}
+                      <a href="">
+                        <span class=""></span> STREAMERS
+                      </a>
+                      {% endif %}
+                    </li>
+                    <li class="">
+                      {% if aforum %}
+                      <a class="active" href="{% url 'account:forums'%}">
+                        <span class=""></span> FORUMS
+                      </a>
+                      {%else%}
+                      <a href="{% url 'account:forums'%}">
+                        <span class=""></span> FORUMS
+                      </a>
+                      {% endif %}
+                    </li>
+                  <li class="">
+                    {% if apost %}
+                    <a class="active" href="{% url 'account:list' %}">
+                      <span class=""></span> POSTS
+                    </a>
+                    {%else%}
+                    <a href="{% url 'account:list' %}">
+                      <span class=""></span> POSTS
+                    </a>
+                    {% endif %}
+                  </li>
+                  <li class="">
+                    {% if ajoin %}
+                    <a href="" class="active">
+                      <span class=""></span> JOINUs
+                    </a>
+                    {%else%}
+                    <a href="">
+                      <span class=""></span> JOINUs
+                    </a>
+                    {% endif %}
+                  </li>
+                  </ul>
+                  <!-- {% if user.is_authenticated %}
+                <form class="navbar-form navbar-left" role="search"  action="#" method="get">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="q" value="    search" style="padding-left:20%; padding-right:20%;">
+                  </div>
+                  <button type="submit" name="button" style="display: none;" class="btn btn-primary"> search</button>
+                </form>
+                {% endif %} -->
+                <ul class="nav navbar-nav navbar-right">
+                  {% if user.is_authenticated %}
+                  <li>
+                    <a href="">
+                       LOGOUT
+                    </a>
+                  </li>
+                  {% else %}
+                  <li>
+                    <a href="">
+                      </span> LOGIN
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+            </div>
+        </div>
+      </nav>
+    {% block body%}
+    {% endblock %}
+  </body>
+<footer>
+  <div class="container-fluid footer">
+    <br><br><br><br>
+    <div class="row">
+      <h4>Connect with Legion XIII GAMING</h4>
+      <br><br>
+    </div>
+    <div class="col-sm-offset-2 col-sm-2">
+      <a href="#" style="margin-roght:-10%;"><span class="iconify icon:simple-icons:discord" style="height:60px ; width:60px">
+      </a>
+    </div>
+    <div class=" col-sm-2">
+      <a href="#"><img src="{% static 'account/images/steam-512.png'%}" href="#" alt="" class="symbols" width="60" height="60"></a>
+    </div>
+    <div class=" col-sm-2">
+      <a href="#"><img src="{% static 'account/images/twitter-3-512.png'%}" alt="" class="symbols" width="60" height="60"></a>
+    </div>
+    <div class=" col-sm-2">
+    <a href="#"><img src="{% static 'account/images/instagram-6-512.png'%}" alt="" class="symbols" width="60" height="60"></a>
+    </div>
+  </div>
+  <script>
+
+    $("nav li").hover(function(){
+      $(".active").removeClass("active");
+    });
+
+  </script>
+  </footer>
+</html>

@@ -1,0 +1,38 @@
+{% extends 'account/base.html'%}
+{% load static %}
+{% block body%}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row ">
+      <div class="col-sm-6 jumpotext">
+        <br>
+        <br>
+        <h2> POSTS </h2>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="container fluid">
+    {% for post in posts%}
+    <div class="row card">
+  <div class="col-lg-3">
+    <a href="{% url 'account:detail' post.id %}"><img class="card-img-top" src="{{post.post_img.url }}" alt="Card image cap"  style="margin-right:2%;"></a>
+  </div>
+    <div class="card-block col-lg-9">
+      <a href="{% url 'account:detail' post.id %}"><h1 class="card-title">{{post.title}}</h1></a>
+      <p class="card-text">{{post.body}}</p>
+      <a href="{% url 'account:detail' post.id %}" class=" btn btn-mine ">Read More</a>
+    </div>
+  </div>
+    {% endfor %}
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  {% endblock %}

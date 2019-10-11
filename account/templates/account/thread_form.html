@@ -1,0 +1,34 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% block body%}
+<link rel="stylesheet" type="text/css" href="{% static 'account/createpost.css' %}">
+<div class="container-fluid">
+  <div class="row field">
+    <form class="" action="" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% for Field in form %}
+      <div class="col-sm-offset-3 col-sm-9">
+        <span class="text-danger small"> {{Field.errors}}</span>
+      </div>
+      <div class="col-sm-3" style="margin-bottom:5%">
+        {{Field.label_tag}}
+      </div>
+      <div class="col-sm-9" style="margin-bottom:5%">
+        {{Field}}
+      </div>
+      {% endfor %}
+      <div class="col-sm-offset-5 com-sm-7">
+        <button type="submit" class="btn btn-mine"> submit </button>
+      </div>
+    </form>
+  </div>
+
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock%}

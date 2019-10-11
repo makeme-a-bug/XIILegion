@@ -1,0 +1,19 @@
+.mine input{
+  background-color: #252525;
+  border-color: #252525;
+  /* padding-right: 30%; */
+  padding-top: 2%;
+  padding-bottom: 2%;
+  transform: skew(-4deg);
+  column-width: 12;
+  margin-bottom: 20%;
+  margin-left: -50%;
+}
+.mine label{
+
+  /* font-size: 20px; */
+
+}
+.mine {
+  margin-top: 5%;
+}
